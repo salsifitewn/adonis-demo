@@ -1,4 +1,4 @@
-# Adonis-demo
+# Adonis-V5-demo
 
 ## Installation
 
@@ -6,21 +6,26 @@
 
 `yarn create adonis-ts-app adonis-demo`
 
-## Additionnal Packages
+## Additional Packages
 
 ### Front
 
-- TailwindCSS
-  `npm install -D tailwindcss@latest postcss@latest autoprefixer@latest`
-  `npx tailwindcss init -p`
+- TailwindCSS  
+  `yarn install -D tailwindcss@latest postcss@latest autoprefixer@latest`  
+  `npx tailwindcss init -p`  
 
-- daisyUI
-  `npm i daisyui --save`
+- daisyUI  
+  `yarn i daisyui --save`  
+
+- Alpine.js
+  `yarn add alpinejs`
 
 ## TODO
 
-Alpine.js
-
+- lint-staged
+- create first controller
+- create first model
+  
 ## Adonis CLI history
 
 ```bash
@@ -61,8 +66,16 @@ Global Flags
   -v, --version boolean
 ```
 
-## Documentation
+## Resources
 
+- <https://docs.adonisjs.com/guides>
 - <https://github.com/edge-js/syntax> : templating
 - <https://daisyui.com/docs/use>
 - <https://www.cbsofyalioglu.com/code/adonisjs5-tailwind/>
+- <https://ivanprats.dev/blog/set-up-tailwindcss-in-new-adonis5/>
+- <https://github.com/adonisjs-community/awesome-adonisjs>
+- <https://alpinejs.dev/>
+
+## Licence
+
+MIT

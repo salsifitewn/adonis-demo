@@ -1,6 +1,11 @@
 module.exports = {
   purge: {
-    content: ['./resources/**/*.{js,ts,edge}'],
+    content: [
+      './resources/views/**/*.edge',
+      './resources/css/**/*.css',
+      './resources/js/**/*.js',
+      './resources/js/**/*.ts',
+    ],
     options: {
       safelist: [/data-theme$/],
     },

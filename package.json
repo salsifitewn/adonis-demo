@@ -33,6 +33,7 @@
     "@adonisjs/session": "^6.0.0",
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.0.0",
+    "alpinejs": "^3.2.1",
     "daisyui": "^1.8.0",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
