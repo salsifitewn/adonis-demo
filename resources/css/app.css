@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-html, body {
+/* html, body {
   background-color: #F7F8FA;
   font-family: 'Poppins', sans-serif;
   height: 100vh;
@@ -73,4 +76,4 @@ main li:before {
 main code {
   font-size: 16px;
   background: #e6e2ff;
-}
+} */
