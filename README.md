@@ -20,6 +20,12 @@
 - Alpine.js
   `yarn add alpinejs`
 
+### Back
+
+- japa test
+  `yarn add -D japa execa get-port`  
+  `node -r @adonisjs/assembler/build/register japaFile.ts\n`
+  
 ## TODO
 
 - lint-staged
@@ -75,7 +81,7 @@ Global Flags
 - <https://ivanprats.dev/blog/set-up-tailwindcss-in-new-adonis5/>
 - <https://github.com/adonisjs-community/awesome-adonisjs>
 - <https://alpinejs.dev/>
-
+- <https://docs.adonisjs.com/cookbooks/testing-adonisjs-apps>
 ## Licence
 
 MIT
