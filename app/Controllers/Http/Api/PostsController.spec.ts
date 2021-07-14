@@ -2,20 +2,33 @@ import test from 'japa'
 import supertest from 'supertest'
 import { PostFactory } from 'database/factories'
 import Post from 'app/Models/Post'
+import faker from 'faker'
 const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}`
 
 test.group('Post Controller', () => {
   test('should create a post', async (assert) => {
     // Given
-    const post = { id: 1 }
+    const post = { name: faker.lorem.words() }
+    // When
+    const response = await supertest(BASE_URL)
+      .post('/api/posts')
+      .send(post)
+      .set('Accept', 'application/json')
+      // Then
+      .expect(201)
+      .expect('Content-Type', /json/)
+    assert.equal(post.name, response.body.name)
+  })
+  test('should not create a post', async (assert) => {
+    // Given
+    const post = { name: faker.datatype.number }
     // When
     await supertest(BASE_URL)
       .post('/api/posts')
       .send(post)
       .set('Accept', 'application/json')
       // Then
-      .expect(201, { id: 1 })
-      .expect('Content-Type', /json/)
+      .expect(422)
   })
   // test('should show a post', async (assert) => {
   //   // Given
