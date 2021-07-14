@@ -5,15 +5,15 @@
 @baseUrl = {{protocol}}://{{domain}}:{{port}}{{apiPrefix}}
 @specificApiPrefix = /api/v1
 @specificBaseUrl = {{protocol}}://{{domain}}:{{port}}{{specificApiPrefix}}
-@postsUrl = {{baseUrl}}/posts
-@specificPostsUrl = {{specificBaseUrl}}/posts
+@versionUrl = {{baseUrl}}/version
+@specificVersionUrl = {{specificBaseUrl}}/version
 
 @authUrl = {{baseUrl}}/token
 @usersUrl = {{baseUrl}}/users
 
-POST {{postsUrl}}
+GET {{versionUrl}}
 ####
-POST {{specificPostsUrl}}
+GET {{specificVersionUrl}}
 
 ####
 http://127.0.0.1:3333/
