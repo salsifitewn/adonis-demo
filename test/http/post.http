@@ -1,0 +1,19 @@
+@port = {{$dotenv PORT}}
+@domain = {{$dotenv HOST}}
+@protocol = http
+@apiPrefix = /api
+@baseUrl = {{protocol}}://{{domain}}:{{port}}{{apiPrefix}}
+@specificApiPrefix = /api/v1
+@specificBaseUrl = {{protocol}}://{{domain}}:{{port}}{{specificApiPrefix}}
+@postsUrl = {{baseUrl}}/posts
+@specificPostsUrl = {{specificBaseUrl}}/posts
+
+@authUrl = {{baseUrl}}/token
+@usersUrl = {{baseUrl}}/users
+
+POST {{postsUrl}}
+####
+POST {{specificPostsUrl}}
+
+####
+http://127.0.0.1:3333/

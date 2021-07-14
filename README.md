@@ -44,6 +44,8 @@
 
 ```bash
 node ace make:view partials/navbar
+node ace make:middleware ApiVersion
+node ace make:controller Api/api
 ```
 
 ```sh
@@ -121,7 +123,10 @@ CREATE: ace-manifest.json file
 - <https://docs.adonisjs.com/cookbooks/testing-adonisjs-apps>
 - <https://docs.adonisjs.com/guides/database/introduction>
 - <https://docs.adonisjs.com/guides/auth/introduction>
-  
+- <https://www.youtube.com/watch?v=bSvw887ptKI> crash-course
+- <https://medium.com/mestredev/versioning-your-rest-api-with-laravel-646bcc1f70a4> : Api versionning
+- <https://knexjs.org/> : database migrations
+
 ## Licence
 
 MIT

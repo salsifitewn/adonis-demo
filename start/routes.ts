@@ -19,7 +19,25 @@
 */
 
 import Route from '@ioc:Adonis/Core/Route'
+import Config from '@ioc:Adonis/Core/Config'
 
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+Config.get('apiVersion')
+// Route.resource('/user', 'UsersController')
+Route.group(() => {
+  Route.post('posts', 'PostsController.store')
+  Route.get('version', 'ApisController.index')
+})
+  .prefix('api/v1')
+  .middleware('apiVersion:v1')
+  .namespace('App/Controllers/Http/Api')
+
+Route.group(() => {
+  Route.post('posts', 'PostsController.store')
+  Route.get('version', 'ApisController.index')
+})
+  .prefix('api')
+  .middleware('apiVersion')
+  .namespace('App/Controllers/Http/Api')
