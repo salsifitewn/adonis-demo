@@ -1,10 +1,3 @@
-// import test from 'japa'
-
-// test.group('Example', () => {
-//   test('assert sum', (assert) => {
-//     assert.equal(2 + 2, 4)
-//   })
-// })
 import test from 'japa'
 import { JSDOM } from 'jsdom'
 import supertest from 'supertest'
@@ -12,6 +5,10 @@ import supertest from 'supertest'
 const BASE_URL = `http://${process.env.HOST}:${process.env.PORT}`
 
 test.group('Welcome', () => {
+  test('assert sum', (assert) => {
+    assert.equal(2 + 2, 4)
+  })
+
   test('ensure home page works', async (assert) => {
     /**
      * Make request

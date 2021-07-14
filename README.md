@@ -29,11 +29,16 @@
 - setup database
   `yarn @adonisjs/lucid`
   `node ace configure @adonisjs/lucid`
+
+- create auth
+  `yarn add i @adonisjs/auth`
+  `node ace configure @adonisjs/auth`
+  `yarn add phc-argon2`
+
 ## TODO
 
 - lint-staged
 - create first controller
-- create first model
   
 ## Adonis CLI history
 
@@ -86,6 +91,24 @@ Global Flags
   -v, --version boolean
 ```
 
+```bash
+# auth
+➜ node ace configure @adonisjs/auth
+❯ Select provider for finding users · lucid
+❯ Select which guard you need for authentication (select using space) · web, api
+❯ Enter model name to be used for authentication · User
+❯ Create migration for the users table? (y/N) · yes
+❯ Select the provider for storing API tokens · database
+❯ Create migration for the api_tokens table? (y/N) · yes
+SKIP:   app/Models/User.ts file already exists
+CREATE: contracts/auth.ts
+CREATE: config/auth.ts
+SKIP:   app/Middleware/Auth.ts file already exists
+SKIP:   app/Middleware/SilentAuth.ts file already exists
+UPDATE: .adonisrc.json { providers += "@adonisjs/auth" }
+CREATE: ace-manifest.json file
+```
+
 ## Resources
 
 - <https://docs.adonisjs.com/guides>
@@ -97,6 +120,7 @@ Global Flags
 - <https://alpinejs.dev/>
 - <https://docs.adonisjs.com/cookbooks/testing-adonisjs-apps>
 - <https://docs.adonisjs.com/guides/database/introduction>
+- <https://docs.adonisjs.com/guides/auth/introduction>
   
 ## Licence
 
