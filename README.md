@@ -25,7 +25,10 @@
 - japa test
   `yarn add -D japa execa get-port`  
   `node -r @adonisjs/assembler/build/register japaFile.ts\n`
-  
+
+- setup database
+  `yarn @adonisjs/lucid`
+  `node ace configure @adonisjs/lucid`
 ## TODO
 
 - lint-staged
@@ -46,6 +49,9 @@ Available commands
   repl                   Start a new REPL session
   serve                  Start the AdonisJS HTTP server, along with the file watcher. Also starts the webpack dev server when webpack encore is installed
 
+db
+  db:seed                Execute database seeder files
+
 dump
   dump:rcfile            Dump contents of .adonisrc.json file along with defaults
 
@@ -62,10 +68,18 @@ make
   make:exception         Make a new custom exception class
   make:listener          Make a new event listener class
   make:middleware        Make a new middleware
+  make:migration         Make a new migration file
+  make:model             Make a new Lucid model
   make:prldfile          Make a new preload file
   make:provider          Make a new provider class
+  make:seeder            Make a new Seeder file
   make:validator         Make a new validator
   make:view              Make a new view template
+
+migration
+  migration:rollback     Rollback migrations to a given batch number
+  migration:run          Run pending migrations
+  migration:status       Check migrations current status.
 
 Global Flags
   -h, --help boolean
@@ -82,6 +96,8 @@ Global Flags
 - <https://github.com/adonisjs-community/awesome-adonisjs>
 - <https://alpinejs.dev/>
 - <https://docs.adonisjs.com/cookbooks/testing-adonisjs-apps>
+- <https://docs.adonisjs.com/guides/database/introduction>
+  
 ## Licence
 
 MIT

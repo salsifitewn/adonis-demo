@@ -37,12 +37,16 @@
   },
   "dependencies": {
     "@adonisjs/core": "^5.1.0",
+    "@adonisjs/lucid": "^15.0.3",
     "@adonisjs/repl": "^3.0.0",
     "@adonisjs/session": "^6.0.0",
     "@adonisjs/shield": "^7.0.0",
     "@adonisjs/view": "^6.0.0",
     "alpinejs": "^3.2.1",
     "daisyui": "^1.8.0",
+    "i": "^0.3.6",
+    "luxon": "^2.0.1",
+    "pg": "^8.6.0",
     "proxy-addr": "^2.0.7",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.19"
