@@ -54,6 +54,36 @@ test.group('Post Controller', (group) => {
       },
     ])
   })
+  test('should update a post', async (assert) => {
+    // Given
+    const post = await PostFactory.create()
+    const updatePost = {
+      ...post.toJSON(),
+      title: 'new title',
+    }
+    // When
+    const response = await supertest(BASE_URL)
+      .put(`/api/posts/${post.id}`)
+      .set('Authorization', 'bearer ' + token)
+      .set('Accept', 'application/json')
+      .send(updatePost)
+
+      // Then
+      .expect(200)
+    assert.equal(response.body.title, updatePost.title)
+  })
+  test('should destroy a post', async (assert) => {
+    // Given
+    const post = await PostFactory.create()
+
+    // When
+    await supertest(BASE_URL)
+      .delete(`/api/posts/${post.id}`)
+      .set('Authorization', 'bearer ' + token)
+      .set('Accept', 'application/json')
+      // Then
+      .expect(200, post.toJSON())
+  })
 
   test('should list posts', async (assert) => {
     // Given
