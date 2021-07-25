@@ -1,0 +1,17 @@
+@port = {{$dotenv PORT}}
+@domain = {{$dotenv HOST}}
+@protocol = http
+@apiPrefix = /api
+@baseUrl = {{protocol}}://{{domain}}:{{port}}{{apiPrefix}}
+@specificApiPrefix = /api/v1
+@specificBaseUrl = {{protocol}}://{{domain}}:{{port}}{{specificApiPrefix}}
+
+@authUrl = {{baseUrl}}/login
+@postsUrl = {{baseUrl}}/posts
+
+# @name login
+POST {{authUrl}}
+Content-Type: application/x-www-form-urlencoded
+
+email=Odie_Kshlerin3@example.org
+&password=secret

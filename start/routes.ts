@@ -29,6 +29,7 @@ Config.get('apiVersion')
 Route.group(() => {
   Route.post('posts', 'PostsController.store')
   Route.get('version', 'ApisController.index')
+  Route.post('login', 'AuthController.login')
 })
   .prefix('api/v1')
   .middleware('apiVersion:v1')
@@ -37,6 +38,7 @@ Route.group(() => {
 Route.group(() => {
   Route.post('posts', 'PostsController.store')
   Route.get('version', 'ApisController.index')
+  Route.post('login', 'AuthController.login')
 })
   .prefix('api')
   .middleware('apiVersion')
