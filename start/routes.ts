@@ -27,7 +27,13 @@ Route.get('/', async ({ view }) => {
 Config.get('apiVersion')
 // Route.resource('/user', 'UsersController')
 Route.group(() => {
-  Route.post('posts', 'PostsController.store')
+  Route.resource('posts', 'PostsController')
+    .apiOnly()
+    .middleware({
+      store: ['auth:api'],
+      destroy: ['auth:api'],
+    })
+    .as('posts_v1')
   Route.get('version', 'ApisController.index')
   Route.post('login', 'AuthController.login')
 })
@@ -36,7 +42,12 @@ Route.group(() => {
   .namespace('App/Controllers/Http/Api')
 
 Route.group(() => {
-  Route.post('posts', 'PostsController.store')
+  Route.resource('posts', 'PostsController')
+    .apiOnly()
+    .middleware({
+      store: ['auth:api'],
+      destroy: ['auth:api'],
+    })
   Route.get('version', 'ApisController.index')
   Route.post('login', 'AuthController.login')
 })

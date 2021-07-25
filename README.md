@@ -12,10 +12,10 @@
 
 - TailwindCSS  
   `yarn install -D tailwindcss@latest postcss@latest autoprefixer@latest`  
-  `npx tailwindcss init -p`  
+  `npx tailwindcss init -p`
 
 - daisyUI  
-  `yarn i daisyui --save`  
+  `yarn i daisyui --save`
 
 - Alpine.js
   `yarn add alpinejs`
@@ -39,7 +39,7 @@
 
 - lint-staged
 - create first controller
-  
+
 ## Adonis CLI history
 
 ```bash
@@ -126,6 +126,12 @@ CREATE: ace-manifest.json file
 - <https://www.youtube.com/watch?v=bSvw887ptKI> crash-course
 - <https://medium.com/mestredev/versioning-your-rest-api-with-laravel-646bcc1f70a4> : Api versionning
 - <https://knexjs.org/> : database migrations
+- <https://github.com/adonisjs/core/issues/1246> : duplicate route name, even with different prefix
+- <https://github.com/thetutlage/japa#running-multiple-test-files>
+- <https://www.rubydoc.info/github/stympy/faker/Faker>
+- <https://visionmedia.github.io/superagent/#basic-authentication> : test auth
+
+## side notes
 
 ## Licence
 

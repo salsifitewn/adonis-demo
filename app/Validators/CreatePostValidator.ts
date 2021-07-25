@@ -24,7 +24,8 @@ export default class CreatePostValidator {
    *    ```
    */
   public schema = schema.create({
-    name: schema.string({ trim: true }),
+    title: schema.string({ trim: true }, []),
+    description: schema.string({ trim: true }, []),
   })
 
   /**
@@ -38,5 +39,7 @@ export default class CreatePostValidator {
    * }
    *
    */
-  public messages = {}
+  public messages = {
+    string: 'The {{ field }} is not a string',
+  }
 }

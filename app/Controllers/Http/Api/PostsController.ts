@@ -1,6 +1,8 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Post from 'App/Models/Post'
 import CreatePost from 'App/Validators/CreatePostValidator'
+import Logger from '@ioc:Adonis/Core/Logger'
+
 // import Database from '@ioc:Adonis/Lucid/Database'
 
 // export default class PostsController {
@@ -11,18 +13,20 @@ import CreatePost from 'App/Validators/CreatePostValidator'
 
 export default class PostsController {
   public async index({ response }: HttpContextContract) {
-    return response.status(501)
+    const posts = await Post.all()
+    Logger.info('' + posts.length)
+    response.status(200).send(posts)
   }
   public async update({ response }: HttpContextContract) {
-    return response.status(501)
+    response.status(501)
   }
   public async show({ response }: HttpContextContract) {
-    return response.status(501)
+    response.status(501)
   }
   public async destroy({ response }: HttpContextContract) {
-    return response.status(501)
+    response.status(501)
   }
-  public async store({ request, response }: HttpContextContract) {
+  public async store({ auth, request, response }: HttpContextContract) {
     const payload = await request.validate(CreatePost)
     const post = await Post.create(payload)
     response.status(201).send(post)

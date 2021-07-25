@@ -15,3 +15,14 @@ Content-Type: application/x-www-form-urlencoded
 
 email=Odie_Kshlerin3@example.org
 &password=secret
+
+####
+POST {{postsUrl}}
+Content-Type:application/json
+Authorization: Bearer {{login.response.body.token}}
+Accept: application/json
+
+{
+  "title":12,
+  "description":"fd"
+}
