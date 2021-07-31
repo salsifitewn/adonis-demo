@@ -1,4 +1,4 @@
-// import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 // import Database from '@ioc:Adonis/Lucid/Database'
 
@@ -11,10 +11,20 @@
 import Post from 'App/Models/Post'
 
 export default class PostsController {
-  // public async show({ params }) {
-  //   const post = await Post.find(1)
-  //   return post
-  // }
+  public async index({ response, view }: HttpContextContract) {
+    const posts = await Post.query().orderBy('id', 'asc')
+    const html = await view.render('posts/index', {
+      posts,
+    })
+    return html
+  }
+  public async show({ params, view }) {
+    const post = await Post.find(params.id)
+    const html = await view.render('posts/show', {
+      post,
+    })
+    return html
+  }
 
   public async store({ params }) {
     return

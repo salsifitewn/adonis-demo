@@ -1,0 +1,36 @@
+@layout('layouts/main')
+@set('title', post.title)
+
+@section('body')
+
+<div x-data="post" class="hero min-h-[25vh] bg-base-200">
+  <div class="text-center hero-content">
+    <div class="max-w-md">
+      <h1 x-text="`${post.title}`" class="mb-5 text-5xl font-bold">
+          </h1>
+    </div>
+  </div>
+</div>
+
+<main class="container mx-auto">
+  @!component('components.button', {
+    text: 'Edit',
+    type: 'button',
+    class: 'btn btn-error',
+  })
+
+  <button type="button" class="btn btn-error">Edit</button>
+  <p x-data="post" x-text="`${post.description}`"></p>
+</main>
+
+<script>
+  document.addEventListener('alpine:init',() => {
+    Alpine.data('post', () => ({
+      post:{{{ stringify(post) }}},
+      init(){
+        }
+      })
+    );
+  })
+</script>
+@end

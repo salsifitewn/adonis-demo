@@ -1,0 +1,115 @@
+@layout('layouts/main')
+@set('title', 'Posts')
+
+@section('body')
+
+<div class="hero min-h-[25vh] bg-base-200">
+  <div class="text-center hero-content">
+    <div class="max-w-md">
+      <h1 class="mb-5 text-5xl font-bold">
+            Hello there
+          </h1>
+      <p class="mb-5">
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+          </p>
+          <label for="my-modal-2" class="btn btn-primary modal-button">open modal</label>
+    </div>
+  </div>
+</div>
+
+<main class="container mx-auto ">
+<div class="overflow-x-auto mt-10">
+  {{--  <table class="w-full table table-zebra">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    @each(post in posts)
+      <tr>
+        <td><a class="link-primary" href="{{ route('posts.show',{id:post.id}) }}">{{post.title}}</a></td>
+        <td style="	white-space: normal">{{post.description}}</td>
+      </tr>
+    @end
+
+    </tbody>
+  </table>  --}}
+<table class="w-full table table-zebra">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>description</th>
+      <th>action</th>
+    </tr>
+  </thead>
+
+
+<tbody>
+  <template
+    x-data="posts"
+    x-for="post in posts" :key="post.id">
+    <tr>
+      <td><a class="link-primary" href="{{ route('posts.index')}}" x-text="`${post.title}`"></a></td>
+      <td style="	white-space: normal" x-text="`${post.description}`"></td>
+      <td style="	white-space: normal" ><button type="button" class="btn btn-error" @click="deletePost(post.id)">Delete</button></td>
+    </tr>
+</template>
+</tbody>
+</table>
+</div>
+
+
+
+<input type="checkbox" id="my-modal-2" class="modal-toggle">
+<label class="modal" for="my-modal-2">
+  <label class="modal-box">
+    <div>
+      {{--  <form method="POST"
+      x-data="validateForm()"
+      x-init="
+        $watch('fullname', value => { validate('fullname') })
+        $watch('email', value => { validate('email') })
+        $watch('password', value => { validate('password') })
+      ">  --}}
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Titre</span>
+          </label>
+          <input type="text" placeholder="username" class="input input-bordered">
+        </div>
+<div class="form-control">
+  <label class="label">
+    <span class="label-text">Description</span>
+  </label>
+  <textarea class="textarea h-24 textarea-bordered" placeholder="Bio"></textarea>
+</div>
+
+      {{--  </form>  --}}
+    </div>
+    <div class="modal-action">
+      <label for="my-modal-2" class="btn btn-primary"><div x-data>Create</div></label>
+      <label for="my-modal-2" class="btn">Cancel</label>
+    </div>
+  </label>
+</label>
+</main>
+<script>
+  document.addEventListener('alpine:init',() => {
+    Alpine.data('posts', () => ({
+      posts: {{{ stringify(posts) }}},
+      deletePost(postId) {
+        if(confirm('delete?')){
+          this.posts=this.posts.filter(
+              ({id}) => id!==postId
+                )
+          }
+        }
+    })
+    );
+  })
+</script>
+@end
+
