@@ -46,6 +46,7 @@
 node ace make:view partials/navbar
 node ace make:middleware ApiVersion
 node ace make:controller Api/api
+node ace make:view posts/create
 ```
 
 ```sh
@@ -130,6 +131,9 @@ CREATE: ace-manifest.json file
 - <https://github.com/thetutlage/japa#running-multiple-test-files>
 - <https://www.rubydoc.info/github/stympy/faker/Faker>
 - <https://visionmedia.github.io/superagent/#basic-authentication> : test auth
+- <https://docs.adonisjs.com/reference/views/globals/stringify>
+- <https://codepen.io/trovster/pen/oNjGGMq> :draggrable
+- <https://learnvue.co/2020/01/how-to-add-drag-and-drop-to-your-vuejs-project/> :draggrable
 
 ## side notes
 

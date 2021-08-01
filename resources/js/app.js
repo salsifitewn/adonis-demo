@@ -1,4 +1,4 @@
-import '../css/app.css'
+import '../css/app.scss'
 import Alpine from 'alpinejs'
 import search from './search.js'
 

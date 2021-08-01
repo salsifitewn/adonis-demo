@@ -1,0 +1,68 @@
+<div x-data="dragNDrop">
+  <div class="drag-and-drop">
+    <div class="drag-and-drop__container drag-and-drop__container--from">
+      <h3 class="drag-and-drop__title" @:click="alert('Hello World!')">From</h3>
+      <ul class="drag-and-drop__items" :class="{ 'drag-and-drop__items--removing': removing }"
+        x-on:drop="removing = false" x-on:drop.prevent="const itemID = event.dataTransfer.getData('itemID')
+            const selectedItem = items.find(item=>item.id==itemID)
+                items = items.filter(item => item.id != selectedItem.id)
+                items.push({...selectedItem,list:1})
+                console.log(JSON.parse(JSON.stringify(items)))
+            " x-on:dragover.prevent="removing = true" x-on:dragleave.prevent="removing = false">
+        <!-- loop through the items -->
+        <template x-for="(item,index) in filteredItems(1)" :key="item.id">
+          <li :id="item.id" class="drag-and-drop__item" :class="{ 'drag-and-drop__item--dragging': dragging }"
+            x-on:dragstart.self="
+                        dragging = true;
+                        event.dataTransfer.effectAllowed = 'move';
+                        event.dataTransfer.setData('itemID', event.target.id);
+                        console.log(event.target.id)
+                    " x-on:dragend="dragging = false" x-data="{ dragging: false }" draggable="true" x-text=item.value>
+          </li>
+        </template>
+      </ul>
+    </div>
+    <div class="drag-and-drop__divider">⇄</div>
+    <div class="drag-and-drop__container drag-and-drop__container--to">
+      <h3 class="drag-and-drop__title">To</h3>
+      <ul class="drag-and-drop__items" :class="{ 'drag-and-drop__items--adding': adding }" x-on:drop="adding = false"
+        x-on:drop.prevent="const itemID = event.dataTransfer.getData('itemID')
+            const selectedItem = items.find(item=>item.id==itemID)
+                items = items.filter(item => item.id != selectedItem.id)
+                items.push({...selectedItem,list:2})
+                console.log(JSON.parse(JSON.stringify(items)))
+                " x-on:dragover.prevent="adding = true" x-on:dragleave.prevent="adding = false">
+        <!-- loop through the already selected items -->
+        <template x-for="(item,index) in filteredItems(2)" :key="item.id">
+          <li :id="item.id" class="drag-and-drop__item" :class="{ 'drag-and-drop__item--dragging': dragging }"
+            x-on:dragstart.self="
+                          dragging = true;
+                          event.dataTransfer.effectAllowed = 'move';
+                          event.dataTransfer.setData('itemID', event.target.id);
+                      " x-on:dragend="dragging = false" x-data="{ dragging: false }" draggable="true"
+            x-text=item.value>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+  <button class="btn btn-primary" x-on:click="items= [...propsItems]">Reset List</button>
+  <button class="btn btn-primary" x-on:click="items.push({id:items.length,value:'ee',list:1})">Add Item to list
+    1</button>
+  <button class="btn btn-primary" x-on:click="items=items.filter(item=>item.list!=2)">delete Item from list
+    2</button>
+</div>
+<script>
+  document.addEventListener('alpine:init',() => {
+  Alpine.data('dragNDrop', () => ({
+    adding: false,
+    removing: false,
+    propsItems:{{{ stringify(items) }}},
+    items:{{{ stringify(items) }}},
+    filteredItems(list){
+      return this.items.filter(item => item.list === list)
+    },
+  })
+  );
+})
+</script>

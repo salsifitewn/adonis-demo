@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="garden">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   @entryPointStyles('app')
   @entryPointScripts('app')
 </head>
+
 <body>
   @include('partials/navbar')
 
@@ -15,30 +17,31 @@
       Congratulations, you have just created your first AdonisJS app.
     </p>
     @!section('content')
-        <div class="grid grid-cols-1 gap-4 mt-6">
-          <div>
-            <button class="btn btn-primary" x-data="{ count: 0 }" x-text="`Count: ${count}`" x-on:click="count++">
-            </button>
-          </div>
-          <h1 class="text-xl font-bold" x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
-          <div x-data="{ open: false }">
-            <button class="btn " :class="open ? 'btn-success' : 'btn-info'" @click="open = ! open">Expand</button>
-            <div class="card shadow-2xl lg:card-side bg-primary text-primary-content mt-2" x-show="open" x-transition.duration.500ms>
-              <div class="card-body">
-                <p>x-data is accessible in nested children</p>
-                <div class="justify-end card-actions">
-                  <button class="btn btn-primary">
-                        More info
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 ml-2 stroke-current">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
+    <div class="grid grid-cols-1 gap-4 mt-6">
+      <div>
+        <button class="btn btn-primary" x-data="{ count: 0 }" x-text="`Count: ${count}`" x-on:click="count++">
+        </button>
+      </div>
+      <h1 class="text-xl font-bold" x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+      <div x-data="{ open: false }">
+        <button class="btn " :class="open ? 'btn-success' : 'btn-info'" @click="open = ! open">Expand</button>
+        <div class="card shadow-2xl lg:card-side bg-primary text-primary-content mt-2" x-show="open"
+          x-transition.duration.500ms>
+          <div class="card-body">
+            <p>x-data is accessible in nested children</p>
+            <div class="justify-end card-actions">
+              <button class="btn btn-primary">
+                More info
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  class="inline-block w-6 h-6 ml-2 stroke-current">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
             </div>
           </div>
-            <div class="mt-2"
-              {{--  x-data="{
+        </div>
+      </div>
+      <div class="mt-2" {{--  x-data="{
                   search: '',
                   items: ['foo', 'bar', 'baz'],
                   get filteredItems() {
@@ -46,43 +49,57 @@
                           i => i.startsWith(this.search)
                       )
                   }
-              }"  --}}
-              x-data="search({items:['aa','bb','cc']})"
-            >
-              <input class="input input-bordered" x-model="search" placeholder="Search...">
-                  <ul class="menu items-stretch px-3 shadow-lg bg-base-100 horizontal rounded-box">
-                      <template x-for="item in filteredItems" :key="item">
-                          <li class="mx-2" x-text="`${item}`"></li>
-                      </template>
-                  </ul>
-          </div>
-          <div><button class="btn btn-secondary" x-data @click="alert('I\'ve been clicked!')">Click Me</button></div>
+              }"  --}} x-data="search({items:['aa','bb','cc']})">
+        <input class="input input-bordered" x-model="search" placeholder="Search...">
+        <ul class="menu items-stretch px-3 shadow-lg bg-base-100 horizontal rounded-box">
+          <template x-for="item in filteredItems" :key="item">
+            <li class="mx-2" x-text="`${item}`"></li>
+          </template>
+        </ul>
+      </div>
+      <div><button class="btn btn-secondary" x-data @click="alert('I\'ve been clicked!')">Click Me</button></div>
 
-          <div class="flex justify-around">
-            <div x-data @foo="alert('foo was dispatched')">
-              <button class="btn btn-info" @click="$dispatch('foo','Foo triggered from outside element with @foo.window')">Trigger foo event</button>
-            </div>
-            <div class="alert alert-info" x-data="{ message : 'listening to foo event...' }" x-ref="text" @foo.window="message = $event.detail;$el.classList.replace('alert-info', 'alert-warning')">
-              <div class="flex-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <label x-text="message" ></label>
-              </div>
-            </div>
-          </div>
-          <ul>
-            <li>
-              The route for this page is defined inside <code>start/routes.ts</code> file
-            </li>
-            <li>
-              You can update this page by editing <code>resources/views/welcome.edge</code> file
-            </li>
-            <li>
-              If you run into problems, you can reach us on <a href="https://discord.gg/vDcEjq6?">Discord</a> or the <a href="https://forum.adonisjs.com/">Forum</a>.
-            </li>
-          </ul>
+      <div class="flex justify-around">
+        <div x-data @foo="alert('foo was dispatched')">
+          <button class="btn btn-info"
+            @click="$dispatch('foo','Foo triggered from outside element with @foo.window')">Trigger foo event</button>
         </div>
+        <div class="alert alert-info" x-data="{ message : 'listening to foo event...' }" x-ref="text"
+          @foo.window="message = $event.detail;$el.classList.replace('alert-info', 'alert-warning')">
+          <div class="flex-1">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6 mx-2 stroke-current">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <label x-text="message"></label>
+          </div>
+        </div>
+      </div>
+
+      <ul>
+        <li>
+          The route for this page is defined inside <code>start/routes.ts</code> file
+        </li>
+        <li>
+          You can update this page by editing <code>resources/views/welcome.edge</code> file
+        </li>
+        <li>
+          If you run into problems, you can reach us on <a href="https://discord.gg/vDcEjq6?">Discord</a> or the <a
+            href="https://forum.adonisjs.com/">Forum</a>.
+        </li>
+      </ul>
+    </div>
+
+    @!component('components.draggableList', {
+    items:[
+    {id:1,value:'aa',list:1},
+    {id:2,value:'bb',list:1},
+    {id:3,value:'cc',list:2},
+    {id:4,value:'dd',list:2},
+    ]
+    })
   </main>
+
 </body>
+
 </html>
