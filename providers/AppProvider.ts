@@ -1,9 +1,14 @@
 import { ApplicationContract } from '@ioc:Adonis/Core/Application'
-
 export default class AppProvider {
   constructor(protected app: ApplicationContract) {}
 
-  public register() {
+  public async register() {
+    const { BaseModel } = await import('@ioc:Adonis/Lucid/Orm')
+
+    BaseModel.namingStrategy.serializedName = (_, key: string) => {
+      return key
+    }
+
     // Register your own bindings
   }
 
