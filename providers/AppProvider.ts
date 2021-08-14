@@ -14,6 +14,10 @@ export default class AppProvider {
 
   public async boot() {
     // IoC container is ready
+    // https://dev.to/shemsiu/ioc-container-and-dependency-injection-in-adonis-v5-og2
+    // https://github.com/adonisjs/core/discussions/1881
+    const ContactService = (await import('App/Services/ContactService')).default
+    this.app.container.singleton('App/ContactService', () => new ContactService())
   }
 
   public async ready() {

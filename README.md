@@ -49,6 +49,9 @@ node ace make:controller Api/api
 node ace make:view posts/create
 ```
 
+REPl
+(await models.Natural.all()).map(m=>m.toJSON())
+
 ```sh
 node ace <cmd>
 Available commands
@@ -134,6 +137,10 @@ CREATE: ace-manifest.json file
 - <https://docs.adonisjs.com/reference/views/globals/stringify>
 - <https://codepen.io/trovster/pen/oNjGGMq> :draggrable
 - <https://learnvue.co/2020/01/how-to-add-drag-and-drop-to-your-vuejs-project/> :draggrable
+- <https://stackoverflow.com/questions/3579079/how-can-you-represent-inheritance-in-a-database> : table inheritance
+- <https://github.com/adonisjs/core/discussions/1544#discussioncomment-59621> : global scope
+- <https://stackoverflow.com/questions/21396524/what-is-the-difference-between-assert-expect-and-should-in-chai/21405128> :chai assertion
+- <https://www.chaijs.com/api/assert/>
 
 ## side notes
 

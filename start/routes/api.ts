@@ -11,6 +11,13 @@ Route.group(() => {
       destroy: ['auth:api'],
     })
     .as('api_posts_v1')
+  Route.resource('contacts', 'ContactsController')
+    .apiOnly()
+    .middleware({
+      store: ['auth:api'],
+      destroy: ['auth:api'],
+    })
+    .as('api_contacts_v1')
   Route.get('version', 'ApisController.index')
   Route.post('login', 'AuthController.login')
 })
@@ -26,6 +33,13 @@ Route.group(() => {
       destroy: ['auth:api'],
     })
     .as('api_posts')
+  Route.resource('contacts', 'ContactsController')
+    .apiOnly()
+    .middleware({
+      store: ['auth:api'],
+      destroy: ['auth:api'],
+    })
+    .as('api_contacts')
 
   Route.get('version', 'ApisController.index')
   Route.post('login', 'AuthController.login')

@@ -1,0 +1,31 @@
+@port = {{$dotenv PORT}}
+@domain = {{$dotenv HOST}}
+@protocol = http
+@apiPrefix = /api
+@baseUrl = {{protocol}}://{{domain}}:{{port}}{{apiPrefix}}
+@specificApiPrefix = /api/v1
+@specificBaseUrl = {{protocol}}://{{domain}}:{{port}}{{specificApiPrefix}}
+@versionUrl = {{baseUrl}}/version
+@specificVersionUrl = {{specificBaseUrl}}/version
+
+
+@contactUrl = {{baseUrl}}/contacts
+
+
+####
+GET {{contactUrl}}
+###
+POST  {{contactUrl}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "Hlier.Berger@example.org",
+  "address": "68589 Abelin Saint-Honoré",
+  "zipCode": "66104v",
+  "city": "New Frédéric",
+  "phone": "+33 589410877",
+  "type": "natural",
+  "firstName": "Rebecca",
+  "lastName": "Morel"
+}
